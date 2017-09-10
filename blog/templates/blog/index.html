@@ -1,0 +1,130 @@
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style >
+
+#container-fluid{
+  border-width: 80%;
+  border-height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #B7E6F6  ;
+  font-size: 16px;
+  resize: none;
+
+  .popup {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+  }
+
+  /* The actual popup */
+  .popup .popuptext {
+      visibility: hidden;
+      width: 160px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 8px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -80px;
+  }
+
+  /* Popup arrow */
+  .popup .popuptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: #555 transparent transparent transparent;
+  }
+
+  /* Toggle this class - hide and show the popup */
+  .popup .show {
+      visibility: visible;
+      -webkit-animation: fadeIn 1s;
+      animation: fadeIn 1s;
+  }
+
+  /* Add animation (fade in the popup) */
+  @-webkit-keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+  }
+
+  @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity:1 ;}
+  }
+
+}
+  </style>
+</head>
+
+
+
+<div id="container-fluid">
+<h2 align="center">Login or Signup </h2>
+<p align="center">Tell the people out your mind</p>
+</div>
+
+
+<h1 align="center" >login</h1>
+<form align="right" class="form-inline" action="{%url 'blog:view' %}" method="post">
+  {% csrf_token %}
+   <div class="form-group">
+     <label class="sr-only" >Username</label>
+     <input type="username" class="form-control"  placeholder="Enter username"  name="username">
+   </div>
+   <div class="form-group">
+     <label class="sr-only" >Password:</label>
+     <input type="password" class="form-control"  placeholder="Enter password" name="passward">
+   </div>
+   <div class="checkbox">
+     <label><input type="checkbox" name="remember"> Remember me</label>
+   </div>
+   <button type="submit" class="btn btn-default">Login</button>
+ </form>
+<br>
+
+
+<h1 align="center" >Signup</h1>
+<form align="right" class="form-inline" action="{%url 'blog:signup' %}" method="post">
+  {% csrf_token %}
+   <div class="form-group">
+     <label class="sr-only" >Username</label>
+     <input type="username" class="form-control" required="" placeholder="Enter username"  name="username1" >
+   </div>
+   <div class="form-group">
+     <label class="sr-only" >Password:</label>
+     <input type="password" class="form-control"  required="" placeholder="Enter password" name="passward1">
+   </div>
+   <div class="popup" >
+   <button  type="submit" id="mypopup" class="btn btn-default">Singup</button>
+ </div>
+ </form>
+
+
+ <script>
+ // When the user clicks on div, open the popup
+ function myFunction() {
+     var popup = document.getElementById("myPopup");
+     popup.classList.toggle("show");
+ }
+ </script>

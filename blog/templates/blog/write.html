@@ -1,0 +1,66 @@
+{% load static %}
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style >
+textarea {
+    width: 80%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+
+
+}
+
+.heading p{
+  align:center;
+
+}
+
+
+</style>
+</head>
+
+<div class="container-fluid">
+
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{%url 'blog:index' %}">Login page</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{%url 'blog:showadd' %}">Home</a></li>
+        <li><a  href="{%url 'blog:show' %}">blogs</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="heading">
+    <h3></h3>
+    <p>Write your mind out</p>
+  </div>
+
+
+<form action="{% url 'blog:add' %}" method="post">
+   {% csrf_token %}
+   <input id="title" type="text" name="title" required="Please fill out the title field" ><label>enter title</label>
+   <br>
+   <br>
+
+
+  <textarea  type="text" name="blog" ></textarea><label></label>
+    <input type="submit" name="" value="Save">
+
+
+
+
+
+</form>
+<a href="{% url 'blog:show' %}">Go to blogs</a></h1>
+</div>

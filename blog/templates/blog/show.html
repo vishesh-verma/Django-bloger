@@ -1,0 +1,87 @@
+
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<style >
+
+#blog{
+  border-width: 80%;
+  border-height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+
+#header{
+  border-width: 80%;
+  height: 200px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+
+
+  background-color:#A87CF4   ;
+
+
+
+
+
+}
+
+
+
+</style>
+<body>
+<div class="container-fluid">
+
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="{%url 'blog:index' %}">Login page</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="{%url 'blog:showadd' %}">Home</a></li>
+        <li><a  href="{%url 'blog:show' %}">blogs</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div  id="header">
+<h2 align="center">Blog gallery</h2>
+
+</div>
+
+<div class="container-fluid">
+
+
+{% if blog_ %}
+    {% for i in blog_%}
+     <div id="blog">
+     <h2 align=center>{{i.title}}</h2>
+     <p align=center>{{i.para}}</p>
+     <br>
+     <form class="" action="{% url 'blog:delete' %}" method="post">
+      {%csrf_token%}
+     <input type="hidden" name="delete"  value="{{i.id}}">
+     <input type="submit" onclick="return clicked();" value="delete" >
+     </form>
+     </div>
+    {%endfor%}
+{%else%}
+    <h2 align=center>you have no blogs yet</h2>
+{%endif%}
+
+</div>
+
+
+<script type="text/javascript">
+function clicked() {
+  return confirm('Are you sure you want to delete this blog');
+}
+</script>
+</body>
