@@ -1,9 +1,21 @@
 # -*- coding: utf-8 -*-
-
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import blogsSerializers
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponseRedirect,Http404
 from .models import blogs
 from .models import login
+
+
+class blogsList(APIView):
+
+    def get(self,request):
+        blogss=blogs.objects.all()
+        serializers=blogsSerializers(blogss, many=True)
+        return Response(serializers.data)
+
 
 global pass1
 def index(request):
